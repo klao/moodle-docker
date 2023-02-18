@@ -1,0 +1,57 @@
+name: demoodle
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - 10302:5432
+    restart: on-failure
+    environment:
+      POSTGRES_USER: moodle
+      POSTGRES_PASSWORD: dmoopw22
+
+  web:
+    depends_on:
+      - db
+    build: docker
+    image: demoodle
+    pull_policy: never
+    volumes:
+      - ./moodle:/var/www/html
+      - ./moodledata:/var/www/moodledata
+    ports:
+      - 10301:80
+    restart: on-failure
+    user: 1000:1000
+    environment:
+      DEMOODLE_PORT: 10301
+      DEMOODLE_EMAIL: demoodle@demoodle.org
+      PHP_DB_HOST: db
+      PHP_DB_PORT: 5432
+      PHP_DB_NAME: moodle
+      PHP_DB_USER: moodle
+      PHP_DB_PASS: dmoopw22
+
+  pgadmin:
+    depends_on:
+      - db
+    image: dpage/pgadmin4
+    restart: on-failure
+    ports:
+      - 10303:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: klao@nilcons.com
+      PGADMIN_DEFAULT_PASSWORD: dmoopw22
+
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    restart: on-failure
+    ports:
+      - 10304:8080
+
+volumes:
+  dbdata: {}
