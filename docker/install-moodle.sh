@@ -35,4 +35,8 @@ php admin/cli/install.php \
     --adminpass=password
 
 # Setup cron by using crontab to run the cron.php script every minute
-echo "* * * * * php /var/www/html/moodle/admin/cli/cron.php > /dev/null" | crontab -
+crontab - <<'EOF'
+PATH=/usr/local/bin:/usr/bin:/bin
+
+* * * * * php /var/www/html/admin/cli/cron.php > /dev/null
+EOF
