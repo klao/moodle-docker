@@ -35,6 +35,7 @@ services:
       PHP_DB_PASS: dmoopw22
 
   pgadmin:
+    profiles: ["dba"]
     depends_on:
       - db
     image: dpage/pgadmin4
@@ -46,6 +47,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: dmoopw22
 
   adminer:
+    profiles: ["dba"]
     depends_on:
       - db
     image: adminer
