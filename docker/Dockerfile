@@ -18,7 +18,7 @@ RUN a2enmod rewrite
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # PHP extensions
-RUN docker-php-ext-install intl pgsql zip opcache soap xmlrpc
+RUN docker-php-ext-install intl pgsql zip opcache soap xmlrpc exif
 RUN docker-php-ext-configure gd --with-webp --with-jpeg
 RUN docker-php-ext-install gd
 
