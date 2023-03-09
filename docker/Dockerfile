@@ -18,6 +18,13 @@ RUN a2enmod rewrite
 # Add composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+# Add moosh
+RUN curl -sSL https://moodle.org/plugins/download.php/28292/moosh_moodle41_2023010400.zip -o /tmp/moosh.zip \
+    && unzip -q /tmp/moosh.zip -d /opt \
+    && rm /tmp/moosh.zip \
+    && ln -s /opt/moosh/moosh.php /usr/local/bin/moosh \
+    && cp /opt/moosh/bash_completion /etc/bash_completion.d/moosh
+
 # PHP extensions
 RUN docker-php-ext-install intl pgsql zip opcache soap xmlrpc exif
 RUN docker-php-ext-configure gd --with-webp --with-jpeg
