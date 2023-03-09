@@ -34,9 +34,4 @@ php admin/cli/install.php \
     --supportemail=$DEMOODLE_EMAIL \
     --adminpass=password
 
-# Setup cron by using crontab to run the cron.php script every minute
-crontab - <<'EOF'
-PATH=/usr/local/bin:/usr/bin:/bin
-
-* * * * * php /var/www/html/admin/cli/cron.php > /dev/null
-EOF
+install-moodle-cron.sh

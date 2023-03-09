@@ -31,4 +31,4 @@ COPY opcache.ini $PHP_INI_DIR/conf.d/opcache.ini
 RUN ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 
 # Copy install script
-COPY --chown=moodle:moodle install-moodle.sh /usr/local/bin/install-moodle.sh
+COPY --chown=moodle:moodle install-moodle*.sh /usr/local/bin/
