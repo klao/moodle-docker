@@ -30,5 +30,7 @@ COPY opcache.ini $PHP_INI_DIR/conf.d/opcache.ini
 # Set timezone
 RUN ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 
+COPY sudoers.d/moodle-cron /etc/sudoers.d/
+
 # Copy install script
 COPY --chown=moodle:moodle install-moodle*.sh /usr/local/bin/
