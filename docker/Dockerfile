@@ -1,8 +1,9 @@
 FROM php:7.4-apache
 RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat \
-        neovim sudo git cron libzip-dev zip unzip p7zip-full libpng-dev libjpeg-dev libwebp-dev \
-        libpq-dev libicu-dev libxml2-dev
+        neovim sudo git cron bash-completion \
+        libzip-dev zip unzip p7zip-full libpng-dev libjpeg-dev libwebp-dev libpq-dev libicu-dev \
+        libxml2-dev
 #        && apt-get clean \
 #        && rm -rf /var/lib/apt/lists/*
 
