@@ -34,3 +34,8 @@ COPY sudoers.d/moodle-cron /etc/sudoers.d/
 
 # Copy install script
 COPY --chown=moodle:moodle install-moodle*.sh /usr/local/bin/
+
+# Startup setup
+COPY docker-start.sh /usr/local/bin/
+CMD ["/usr/local/bin/docker-start.sh"]
+ENTRYPOINT []
