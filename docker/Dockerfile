@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1-apache
 RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat \
         neovim sudo git cron bash-completion \
@@ -19,14 +19,14 @@ RUN a2enmod rewrite
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Add moosh
-RUN curl -sSL https://moodle.org/plugins/download.php/28292/moosh_moodle41_2023010400.zip -o /tmp/moosh.zip \
+RUN curl -sSL https://moodle.org/plugins/download.php/29225/moosh_moodle42_2023051601.zip -o /tmp/moosh.zip \
     && unzip -q /tmp/moosh.zip -d /opt \
     && rm /tmp/moosh.zip \
     && ln -s /opt/moosh/moosh.php /usr/local/bin/moosh \
     && cp /opt/moosh/bash_completion /etc/bash_completion.d/moosh
 
 # PHP extensions
-RUN docker-php-ext-install intl pgsql zip opcache soap xmlrpc exif
+RUN docker-php-ext-install intl pgsql zip opcache soap exif
 RUN docker-php-ext-configure gd --with-webp --with-jpeg
 RUN docker-php-ext-install gd
 

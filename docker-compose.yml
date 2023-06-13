@@ -1,4 +1,4 @@
-name: demoodle
+name: demoodle41
 
 services:
   db:
@@ -6,7 +6,7 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
     ports:
-      - 10302:5432
+      - 10402:5432
     restart: on-failure
     environment:
       POSTGRES_USER: moodle
@@ -22,11 +22,11 @@ services:
       - ./moodle:/var/www/html
       - ./moodledata:/var/www/moodledata
     ports:
-      - 10301:80
+      - 10401:80
     restart: on-failure
     user: 1000:1000
     environment:
-      DEMOODLE_PORT: 10301
+      DEMOODLE_PORT: 10401
       DEMOODLE_EMAIL: demoodle@demoodle.org
       PHP_DB_HOST: db
       PHP_DB_PORT: 5432
@@ -41,7 +41,7 @@ services:
     image: dpage/pgadmin4
     restart: on-failure
     ports:
-      - 10303:80
+      - 10403:80
     environment:
       PGADMIN_DEFAULT_EMAIL: klao@nilcons.com
       PGADMIN_DEFAULT_PASSWORD: dmoopw22
@@ -53,7 +53,7 @@ services:
     image: adminer
     restart: on-failure
     ports:
-      - 10304:8080
+      - 10404:8080
 
 volumes:
   dbdata: {}

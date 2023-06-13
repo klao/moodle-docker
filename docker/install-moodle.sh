@@ -12,7 +12,7 @@ cd /var/www/html
 # Download Moodle
 # Change the branch name to the version you want to install
 # TODO: remove the depth=1
-git clone --depth 1 -b MOODLE_400_STABLE git://git.moodle.org/moodle.git .
+git clone --depth 1 -b MOODLE_401_STABLE git://git.moodle.org/moodle.git .
 
 # Install Moodle
 php admin/cli/install.php \
