@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
     build: docker
-    image: demoodle
+    image: demoodle41
     pull_policy: never
     volumes:
       - ./moodle:/var/www/html
