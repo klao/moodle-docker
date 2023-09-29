@@ -3,7 +3,7 @@ RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat-traditional \
         neovim sudo git cron bash-completion \
         libzip-dev zip unzip p7zip-full libpng-dev libjpeg-dev libwebp-dev libpq-dev libicu-dev \
-        libxml2-dev
+        libxml2-dev libyaml-dev
 #        && apt-get clean \
 #        && rm -rf /var/lib/apt/lists/*
 
@@ -29,6 +29,7 @@ RUN curl -sSL https://moodle.org/plugins/download.php/29225/moosh_moodle42_20230
 RUN docker-php-ext-install intl pgsql zip opcache soap exif
 RUN docker-php-ext-configure gd --with-webp --with-jpeg
 RUN docker-php-ext-install gd
+RUN pecl install yaml && docker-php-ext-enable yaml
 
 # PHP config
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
