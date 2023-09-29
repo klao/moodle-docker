@@ -6,5 +6,7 @@ set -euo pipefail
 crontab - <<'EOF'
 PATH=/usr/local/bin:/usr/bin:/bin
 
-* * * * * php /var/www/html/admin/cli/cron.php > /dev/null
+* * * * * php /var/www/html/admin/cli/cron.php > /dev/null 2>&1
+* * * * * php /var/www/html/admin/cli/adhoc_task.php --execute --keep-alive=59 > /dev/null 2>&1
+* * * * * php /var/www/html/admin/cli/adhoc_task.php --execute --keep-alive=59 > /dev/null 2>&1
 EOF
