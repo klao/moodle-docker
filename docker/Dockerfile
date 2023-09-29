@@ -19,7 +19,7 @@ RUN a2enmod rewrite
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Add moosh
-RUN curl -sSL https://moodle.org/plugins/download.php/29225/moosh_moodle42_2023051601.zip -o /tmp/moosh.zip \
+RUN curl -sSL https://moodle.org/plugins/download.php/29895/moosh_moodle42_2023090700.zip -o /tmp/moosh.zip \
     && unzip -q /tmp/moosh.zip -d /opt \
     && rm /tmp/moosh.zip \
     && ln -s /opt/moosh/moosh.php /usr/local/bin/moosh \
