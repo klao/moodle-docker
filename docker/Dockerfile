@@ -33,7 +33,8 @@ RUN docker-php-ext-install gd
 # PHP config
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 RUN echo max_input_vars=10000 >> $PHP_INI_DIR/conf.d/input-vars.ini
-RUN echo upload_max_filesize=200M >> $PHP_INI_DIR/conf.d/upload-max-filesize.ini
+RUN echo upload_max_filesize=200M >> $PHP_INI_DIR/conf.d/max-size.ini
+RUN echo post_max_size=200M >> $PHP_INI_DIR/conf.d/max-size.ini
 COPY opcache.ini $PHP_INI_DIR/conf.d/opcache.ini
 
 # Set timezone
