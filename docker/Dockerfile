@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.0-apache
 RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat-traditional \
         neovim sudo git cron bash-completion \
@@ -26,10 +26,11 @@ RUN curl -sSL https://moodle.org/plugins/download.php/29895/moosh_moodle42_20230
     && cp /opt/moosh/bash_completion /etc/bash_completion.d/moosh
 
 # PHP extensions
-RUN docker-php-ext-install intl pgsql zip opcache soap xmlrpc exif
+RUN docker-php-ext-install intl pgsql zip opcache soap exif
 RUN docker-php-ext-configure gd --with-webp --with-jpeg
 RUN docker-php-ext-install gd
 RUN pecl install yaml && docker-php-ext-enable yaml
+RUN pecl install channel://pecl.php.net/xmlrpc-1.0.0RC3 && docker-php-ext-enable xmlrpc
 
 # PHP config
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
