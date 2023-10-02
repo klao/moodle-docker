@@ -8,7 +8,7 @@ Starting:
 
 ```sh
 mkdir -p moodle moodledata
-docker-compose up -d
+docker compose up -d
 ```
 
 You can download and unpack Moodle into the `moodle` directory and then do installation on the web.
