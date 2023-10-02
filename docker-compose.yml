@@ -43,7 +43,7 @@ services:
     ports:
       - ${PORTBASE}03:80
     environment:
-      PGADMIN_DEFAULT_EMAIL: klao@nilcons.com
+      PGADMIN_DEFAULT_EMAIL: demoodle@demoodle.org
       PGADMIN_DEFAULT_PASSWORD: dmoopw22
 
   adminer:
