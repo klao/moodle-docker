@@ -20,7 +20,7 @@ php admin/cli/install.php \
     --non-interactive \
     --chmod=750 \
     --lang=en \
-    --wwwroot=http://localhost:$DEMOODLE_PORT \
+    --wwwroot=$DEMOODLE_URL \
     --dataroot=/var/www/moodledata \
     --dbtype=pgsql \
     --dbhost=$PHP_DB_HOST \

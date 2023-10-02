@@ -28,6 +28,7 @@ services:
     environment:
       DEMOODLE_PORT: ${WEBPORT}
       DEMOODLE_EMAIL: demoodle@demoodle.org
+      DEMOODLE_URL: http://${PROJECT_NAME}.localhost.direct:${WEBPORT}
       PHP_DB_HOST: db
       PHP_DB_PORT: 5432
       PHP_DB_NAME: moodle
