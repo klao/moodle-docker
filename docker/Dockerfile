@@ -47,6 +47,9 @@ COPY sudoers.d/moodle-cron /etc/sudoers.d/
 # Copy install script
 COPY --chown=moodle:moodle install-moodle*.sh /usr/local/bin/
 
+# For running behind a reverse proxy:
+RUN sed -i '/<Virtual/a SetEnvIf X-Forwarded-Proto "https" HTTPS=on' /etc/apache2/sites-available/000-default.conf
+
 # Startup setup
 COPY docker-start.sh /usr/local/bin/
 CMD ["/usr/local/bin/docker-start.sh"]

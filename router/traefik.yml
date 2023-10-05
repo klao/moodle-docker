@@ -1,6 +1,0 @@
-providers:
-  docker:
-    defaultRule: "Host(`{{ trimSuffix `-web-1` .ContainerName }}.localhost.direct`)"
-
-api:
-  insecure: true

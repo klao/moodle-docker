@@ -3,13 +3,16 @@ name: demoodle-router
 services:
   router:
     container_name: demoodle-router
-    image: traefik:latest
+    build: docker
+    image: traefik_localhost
+    pull_policy: never
     ports:
       - 80:80
+      - 443:443
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.yml:/etc/traefik/traefik.yml
+      - ./config:/etc/traefik
 
 networks:
   default:
