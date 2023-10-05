@@ -21,6 +21,9 @@ services:
     volumes:
       - ./moodle:/var/www/html
       - ./moodledata:/var/www/moodledata
+    networks:
+      - default
+      - router
     ports:
       - ${WEBPORT}:80
     restart: on-failure
@@ -28,7 +31,7 @@ services:
     environment:
       DEMOODLE_PORT: ${WEBPORT}
       DEMOODLE_EMAIL: demoodle@demoodle.org
-      DEMOODLE_URL: http://${PROJECT_NAME}.localhost.direct:${WEBPORT}
+      DEMOODLE_URL: http://${PROJECT_NAME}.localhost.direct
       PHP_DB_HOST: db
       PHP_DB_PORT: 5432
       PHP_DB_NAME: moodle
@@ -55,6 +58,12 @@ services:
     restart: on-failure
     ports:
       - ${PORTBASE}04:8080
+
+networks:
+  default: {}
+  router:
+    name: demoodle-router
+    external: true
 
 volumes:
   dbdata: {}
