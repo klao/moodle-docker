@@ -4,4 +4,4 @@ set -e
 
 sudo /usr/sbin/cron
 
-exec apache2-foreground
+exec php-fpm

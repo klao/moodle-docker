@@ -12,7 +12,7 @@ services:
       POSTGRES_USER: moodle
       POSTGRES_PASSWORD: dmoopw22
 
-  web:
+  fpm:
     depends_on:
       - db
     build: docker
@@ -21,9 +21,8 @@ services:
     volumes:
       - ./moodle:/var/www/html
       - ./moodledata:/var/www/moodledata
-    ports:
-      - ${WEBPORT}:80
     restart: on-failure
+    hostname: ${PROJECT_NAME}_fpm
     user: 1000:1000
     environment:
       DEMOODLE_PORT: ${WEBPORT}
@@ -34,6 +33,19 @@ services:
       PHP_DB_NAME: moodle
       PHP_DB_USER: moodle
       PHP_DB_PASS: dmoopw22
+
+  httpd:
+    depends_on:
+      - fpm
+    image: php:8.0-apache
+    volumes:
+      - ./moodle:/var/www/html
+      - ./fpm.conf:/etc/apache2/conf-available/fpm.conf
+    ports:
+      - ${WEBPORT}:80
+    restart: on-failure
+    hostname: ${PROJECT_NAME}_httpd
+    user: 1000:1000
 
   pgadmin:
     profiles: ["dba"]

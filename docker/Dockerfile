@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.0-fpm
 RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat-traditional \
         neovim sudo git cron bash-completion \
@@ -13,7 +13,7 @@ RUN addgroup --gid 1000 moodle \
     && adduser moodle sudo
 
 # Apache setup
-RUN a2enmod rewrite
+# RUN a2enmod rewrite
 
 # Add composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
