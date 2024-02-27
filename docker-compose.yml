@@ -12,9 +12,16 @@ services:
       POSTGRES_USER: moodle
       POSTGRES_PASSWORD: dmoopw22
 
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - ${PORTBASE}05:8025
+    restart: on-failure
+
   web:
     depends_on:
       - db
+      - mail
     build: docker
     image: ${PROJECT_NAME}_img
     pull_policy: never
