@@ -1,7 +1,7 @@
 FROM php:8.0-apache
 RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat-traditional \
-        neovim sudo git cron bash-completion \
+        neovim sudo git cron bash-completion rsync nano \
         libzip-dev zip unzip p7zip-full libpng-dev libjpeg-dev libwebp-dev libpq-dev libicu-dev \
         libxml2-dev libyaml-dev
 #        && apt-get clean \
