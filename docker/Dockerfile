@@ -3,7 +3,7 @@ RUN apt-get update -q \
     && apt-get install -y -q --no-install-recommends less lsof net-tools iputils-ping netcat-traditional \
         neovim sudo git cron bash-completion rsync nano \
         libzip-dev zip unzip p7zip-full libpng-dev libjpeg-dev libwebp-dev libpq-dev libicu-dev \
-        libxml2-dev libyaml-dev
+        libxml2-dev libyaml-dev maxima maxima-share ghostscript
 #        && apt-get clean \
 #        && rm -rf /var/lib/apt/lists/*
 
