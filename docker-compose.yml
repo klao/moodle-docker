@@ -16,7 +16,7 @@ services:
     image: mailhog/mailhog
     ports:
       - ${PORTBASE}05:8025
-    restart: on-failure
+    restart: unless-stopped
 
   web:
     depends_on:
